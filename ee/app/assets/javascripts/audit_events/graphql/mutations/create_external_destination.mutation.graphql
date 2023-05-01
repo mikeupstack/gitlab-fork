@@ -1,0 +1,12 @@
+#import "../fragments/external_audit_event_destination.fragment.graphql"
+
+mutation createExternalDestination($fullPath: ID!, $destinationUrl: String!) {
+  externalAuditEventDestinationCreate(
+    input: { destinationUrl: $destinationUrl, groupPath: $fullPath }
+  ) {
+    errors
+    externalAuditEventDestination {
+      ...ExternalAuditEventDestinationFragment
+    }
+  }
+}

@@ -1,0 +1,61 @@
+.header-message,
+.footer-message {
+  padding: 0 15px;
+  border: 1px solid transparent;
+  border-radius: 0;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  z-index: 1000;
+
+  p {
+    @include str-truncated(100%);
+    margin-top: -1px;
+    margin-bottom: 0;
+    font-size: $gl-font-size-small;
+  }
+}
+
+.header-message {
+  top: 0;
+  height: $system-header-height;
+  line-height: $system-header-height;
+}
+
+.footer-message {
+  bottom: 0;
+  height: $system-footer-height;
+  line-height: $system-footer-height;
+}
+
+.with-performance-bar {
+  .header-message {
+    top: $performance-bar-height;
+  }
+}
+
+// System Footer
+.with-system-footer {
+  // navless pages' footer eg: login page
+  // navless pages' footer border eg: login page
+  &.devise-layout-html body .footer-container,
+  &.devise-layout-html body hr.footer-fixed {
+    bottom: $system-footer-height;
+  }
+
+  .boards-list,
+  .board-swimlanes {
+    height: calc(100vh - (#{$header-height} + #{$top-bar-height} + #{$performance-bar-height} + #{$system-footer-height} + #{$gl-padding-32}));
+  }
+}
+
+.fullscreen-layout {
+  .header-message,
+  .footer-message {
+    position: static;
+    top: auto;
+    bottom: auto;
+  }
+}
